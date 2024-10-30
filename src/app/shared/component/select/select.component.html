@@ -1,0 +1,4 @@
+<label [ngClass]="{'text-danger': required}">{{ label }}</label>
+<ng-select [items]="listData" [bindLabel]="bindLabel" [bindValue]="bindValue" [placeholder]="placeholder" (change)="onSelectionChange($event)"
+  [formControl]="formControl" [multiple]="bindMultiple" [disabled]="disable" notFoundText="No Data Available" [(ngModel)]="selectedCity">
+</ng-select>
