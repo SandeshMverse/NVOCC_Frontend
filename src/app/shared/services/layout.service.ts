@@ -17,7 +17,7 @@ export class LayoutService {
       icon: "stroke-svg",
     },
     color: {
-      primary_color: '#43B9B2',
+      primary_color: '#87d5f5',
       secondary_color: '#C280D2',
     },
   };

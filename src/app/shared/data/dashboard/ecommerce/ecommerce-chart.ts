@@ -42,7 +42,7 @@ export type ChartOptions = {
     formatter?: Function;
 }
 
-let primary_color = localStorage.getItem('primary_color') || '#43B9B2';
+let primary_color = localStorage.getItem('primary_color') || '#87d5f5';
 let secondary_color = localStorage.getItem('secondary_color') || '#C280D2';
 let light_color = '#F4F5F8'
 let tertiary_color = '#FD7E40'
@@ -610,7 +610,7 @@ export const Chart3 = {
         top: 5,
         left: 0,
         blur: 10,
-        color: ['#43B9B2'],
+        color: ['#87d5f5'],
         opacity: 0.4,
       },
     },

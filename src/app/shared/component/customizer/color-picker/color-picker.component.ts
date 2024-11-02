@@ -12,11 +12,11 @@ import { CommonModule } from '@angular/common';
 })
 export class ColorPickerComponent {
 
-  public primary: string = "#43B9B2";
+  public primary: string = "#87d5f5";
   public secondary: string = "#C280D2";
   public MIXLayout: string = "default";
 
-  public primary_color = localStorage.getItem('primary_color') || '#43B9B2';
+  public primary_color = localStorage.getItem('primary_color') || '#87d5f5';
   public secondary_color = localStorage.getItem('secondary_color') || '#C280D2';
 
   constructor(public layout: LayoutService) {
@@ -39,13 +39,13 @@ export class ColorPickerComponent {
   }
 
   resetColor() {
-    document.documentElement.style.setProperty("--theme-deafult", "#43B9B2");
+    document.documentElement.style.setProperty("--theme-deafult", "#87d5f5");
     document.documentElement.style.setProperty("--theme-secondary", "#C280D2");
-    (<HTMLInputElement>document.getElementById("ColorPicker1")).value = "#43B9B2";
+    (<HTMLInputElement>document.getElementById("ColorPicker1")).value = "#87d5f5";
     (<HTMLInputElement>document.getElementById("ColorPicker2")).value = "#C280D2";
-    this.layout.config.color.primary_color = "#43B9B2";
+    this.layout.config.color.primary_color = "#87d5f5";
     this.layout.config.color.secondary_color = "#C280D2";
-    localStorage.setItem("primary_color", "#43B9B2");
+    localStorage.setItem("primary_color", "#87d5f5");
     localStorage.setItem("secondary_color", "#C280D2");
     window.location.reload();
   }

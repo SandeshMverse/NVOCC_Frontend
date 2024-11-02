@@ -31,9 +31,6 @@ export class SearchComponent {
   @Input() placeholder = 'Search anything...'
 
   constructor(private router: Router) {
-    // this.navServices.item.subscribe((menuItems: Menu[]) =>
-    //   this.item = menuItems
-    // );
   }
 
 
@@ -59,26 +56,7 @@ export class SearchComponent {
       const job_no = option['job_no'] ? option['job_no'].toString().toLowerCase() : '';
       return voyage_registration_id.includes(term.toLowerCase()) || vcn_no.includes(term.toLowerCase()) || job_no.includes(term.toLowerCase());
     });
-    // this.item?.filter(menuItems => {
-    //   if (menuItems.title?.toLowerCase().includes(term) && menuItems.type === 'link') {
-    //     items.push(menuItems);
-    //   }
-    //   menuItems.children?.filter(subItems => {
-    //     if (subItems.title?.toLowerCase().includes(term) && subItems.type === 'link') {
-    //       subItems.icon = menuItems.icon
-    //       items.push(subItems);
-    //     }
-    //     subItems.children?.filter(suSubItems => {
-    //       if (suSubItems.title?.toLowerCase().includes(term)) {
-    //         suSubItems.icon = menuItems.icon
-    //         items.push(suSubItems);
-    //       }
-    //     })
-    //     return
-    //   })
-    // this.menuItems = this.item;
     this.checkSearchResultEmpty(this.menuItems)
-    // })
     return
   }
 
@@ -91,13 +69,11 @@ export class SearchComponent {
 
   addFix() {
     this.searchResult = true;
-    // document.body.classList.add('offcanvas')
   }
 
   removeFix() {
     this.searchResult = false;
     this.text = "";
-    // document.body.classList.remove('offcanvas')
   }
 
   nevigate(item: any) {

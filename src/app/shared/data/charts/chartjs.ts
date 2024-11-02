@@ -1,6 +1,6 @@
 import { ChartType } from "chart.js";
 
-let primary_color = localStorage.getItem('primary_color') || '#43B9B2';
+let primary_color = localStorage.getItem('primary_color') || '#87d5f5';
 let secondary_color = localStorage.getItem('secondary_color') || '#C280D2';
 let tertiary_color = '#FD7E40'
 let info_color = '#2E8DD3'

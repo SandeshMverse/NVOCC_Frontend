@@ -26,16 +26,16 @@ export class ToastComponent {
   private getTypeClass(data: any): void {
     switch (data.type) {
       case 'success':
-        this.messages = [{ severity: 'success', summary: 'Success', detail: data.message }];
+        this.messages = [{ severity: 'info', summary: 'Success', detail: data.message }];
         break;
       case 'error':
         this.messages = [{ severity: 'error', summary: 'error', detail: data.message }];
         break;
       case 'info':
-        this.messages = [{ severity: 'info', summary: 'info', detail: data.message }];
+        this.messages = [{ severity: 'warn', summary: 'info', detail: data.message }];
         break;
       default:
-        this.messages = [{ severity: 'success', summary: 'Success', detail: data.message }];
+        this.messages = [{ severity: 'info', summary: 'Success', detail: data.message }];
         break;
     }
   }

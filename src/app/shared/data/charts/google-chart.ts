@@ -1,6 +1,6 @@
 // import { GoogleChartType } from "ng2-google-charts";
 
-let primary_color = localStorage.getItem('primary_color') || '#43B9B2';
+let primary_color = localStorage.getItem('primary_color') || '#87d5f5';
 let secondary_color = localStorage.getItem('secondary_color') || '#C280D2';
 
 export var areaChart1: any = {

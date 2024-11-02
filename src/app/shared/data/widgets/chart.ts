@@ -44,7 +44,7 @@ export type ChartOptions = {
 
 var trigoStrength = 3;
 
-let primary_color = localStorage.getItem('primary_color') || '#43B9B2';
+let primary_color = localStorage.getItem('primary_color') || '#87d5f5';
 let secondary_color = localStorage.getItem('secondary_color') || '#C280D2';
 let light_color = '#F4F5F8'
 let tertiary_color = '#FD7E40'
