@@ -11,5 +11,15 @@ export const dashData: Routes = [
         },
         loadChildren: () => import('@modules/dashboard/dashboard.module').then(r => r.DashboardModule),
         // canActivate: [PermissionGuard]
-    }
+    },
+    {
+        path: 'country',
+        data: {
+            title: "Country",
+            breadcrumb: "country",
+            pageId:31
+        },
+        loadChildren: () => import('@modules/masters/country/country.module').then(r => r.CountryModule),
+        canActivate: [PermissionGuard]
+    },
 ]

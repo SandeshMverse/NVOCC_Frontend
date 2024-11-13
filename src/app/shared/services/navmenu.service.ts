@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GlobalConfig } from '@shared/configs/global-config';
-import { Menu } from '@shared/models/navmenu';
+import { Menu } from '@shared/models/navmenu-model';
 import { currentUser } from '@shared/utils/current-user';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 @Injectable({

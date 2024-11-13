@@ -9,7 +9,7 @@ import { currentUser } from '@shared/utils/current-user';
 import { LoaderService } from '@shared/services/loader.service';
 import { Subscription } from 'rxjs';
 import { NavmenuService } from '@shared/services/navmenu.service';
-import { Menu } from '@shared/models/navmenu';
+import { Menu } from '@shared/models/navmenu-model';
 
 @Component({
   selector: 'app-sidebar',

@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "@environments/environment";
-import { IForgotPass, ILogin } from "@shared/models/login";
+import { IForgotPass, ILogin } from "@shared/models/login-model";
 import { Observable } from 'rxjs';
 
 @Injectable({

@@ -30,7 +30,6 @@ export class AuthTokenInterceptor implements HttpInterceptor {
             const Authorization = new EncryptedStorage().findItemFromAllStorage(
                 new GlobalConfig().authToken
             );
-            const oldRequestBody = httpRequest.body;
             const newRequestBody = {
                 reqBody: new EncryptionAPILayer().encryptData(httpRequest.body)
             }
@@ -43,9 +42,6 @@ export class AuthTokenInterceptor implements HttpInterceptor {
                             if (err.status === 401 || err.status === 403) {
                                 this.timeoutSessionLogoutUser()
                             }
-                            // if (err.status === 404) {
-                            //     this.toastService.open('Not found', 'info');
-                            // }
                             else {
                                 if (newRes.error_message == "1.0005") {
                                     this.unauthorizedUserLogin();
@@ -54,12 +50,9 @@ export class AuthTokenInterceptor implements HttpInterceptor {
                                     const message = responseMessages.codes.find(item => item.code === newRes.error_message)?.message;
                                     if (message && err.status !== 400)
                                         this.toastService.open(message, 'error');
-                                    // else
-                                    //     this.toastService.open('Something went wrong, please try again later', 'error');
                                 }
                             }
                         }
-                        // return new Observable<HttpEvent<any>>();
                         return throwError(newRes);
                     }),
                     map(response => {
@@ -78,7 +71,6 @@ export class AuthTokenInterceptor implements HttpInterceptor {
                         return response;
                     })
                 );
-                // return next.handle(httpRequest.clone({ setHeaders: { Authorization } }));
             } else {
                 httpRequest = httpRequest.clone({ body: newRequestBody });
                 return next.handle(httpRequest).pipe(
@@ -93,7 +85,6 @@ export class AuthTokenInterceptor implements HttpInterceptor {
 
                         }
                         return throwError(err);
-                        // return new Observable<HttpEvent<any>>();
                     }),
                     map(response => {
                         if (response instanceof HttpResponse) {

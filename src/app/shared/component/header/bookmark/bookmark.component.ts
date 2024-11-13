@@ -3,7 +3,7 @@ import { NavmenuService } from '../../../services/navmenu.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { Menu } from '@shared/models/navmenu';
+import { Menu } from '@shared/models/navmenu-model';
 
 @Component({
   selector: 'app-bookmark',

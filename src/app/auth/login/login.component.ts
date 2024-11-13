@@ -54,20 +54,304 @@ export class LoginComponent {
         new EncryptedStorage().setItem(new GlobalConfig().authToken, value.data.token, false)
         new EncryptedStorage().setItem(new GlobalConfig().userDetails, JSON.stringify(value.data.userDetails), false);
         this.authGuard.resetGuard();
-        // this.navmenu.intializeMenu(JSON.parse(value.data.userDetails.menu));
         this.loginservice.getPermissiologin(value.data.userDetails.role_id).subscribe({
           next: (permissionsResponse) => {
             const permissions = permissionsResponse.data;
             new EncryptedStorage().setItem(new GlobalConfig().pagePermissions, JSON.stringify(permissions), false);
-             // Assuming you have the menu data stored or accessible here
-            const menuData = JSON.parse(value.data.userDetails.menu); // Update this according to your actual implementation
-            
-            const filteredMenu = this.filterMenuByPermissions(menuData, permissions);
+            const menuData = JSON.parse(value.data.userDetails.menu); 
+            // const filteredMenu = this.filterMenuByPermissions(menuData, permissions);
+            const filteredMenu = [
+              {
+                "active" : false,
+                "icon" : "Home",
+                "id" : 1,
+                "level" : 1,
+                "path" : "/dashboard",
+                "title" : "Dashboard",
+                "type" : "link"
+              },
+              {
+                "active" : false,
+                "badge" : true,
+                "children" : [
+                  {
+                    "path" : "/permission",
+                    "title" : "Permission",
+                    "type" : "link"
+                  },
+                  {
+                    "path" : "/pages",
+                    "title" : "Pages",
+                    "type" : "link"
+                  },
+                  {
+                    "path" : "/page-permission",
+                    "title" : "Pages Permission",
+                    "type" : "link"
+                  },
+                  {
+                    "path" : "/role",
+                    "title" : "Role",
+                    "type" : "link"
+                  },
+                  {
+                    "path" : "/role-permission",
+                    "title" : "Role Page permission",
+                    "type" : "link"
+                  }
+                ],
+                "icon" : "Filter",
+                "id" : 1,
+                "level" : 1,
+                "title" : "Access Control",
+                "type" : "sub"
+              },
+              {
+                "active" : false,
+                "children" : [
+                  {
+                    "path" : "/ship",
+                    "title" : "Ship",
+                    "type" : "link"
+                  },
+                  {
+                    "path" : "/port",
+                    "title" : "Port",
+                    "type" : "link"
+                  },
+                  {
+                    "path" : "/berth",
+                    "title" : "Berth",
+                    "type" : "link"
+                  },
+                  {
+                    "active" : false,
+                    "children" : [
+                      {
+                        "path" : "/vendor",
+                        "title" : "Vendor",
+                        "type" : "link"
+                      },
+                      {
+                        "path" : "/vendor-type",
+                        "title" : "Vendor Type",
+                        "type" : "link"
+                      },
+                      {
+                        "path" : "/vendor-service",
+                        "title" : "Vendor Services",
+                        "type" : "link"
+                      }
+                    ],
+                    "level" : 2,
+                    "title" : "Vendor",
+                    "type" : "sub"
+                  },
+                  {
+                    "path" : "/company",
+                    "title" : "Company",
+                    "type" : "link"
+                  },
+                  {
+                    "active" : false,
+                    "children" : [
+                      {
+                        "path" : "/agent",
+                        "title" : "Customer/agent",
+                        "type" : "link"
+                      },
+                      {
+                        "path" : "/agent-type",
+                        "title" : "Customer Type",
+                        "type" : "link"
+                      }
+                    ],
+                    "level" : 2,
+                    "title" : "Customer",
+                    "type" : "sub"
+                  },
+                  {
+                    "path" : "/employee",
+                    "title" : "Employee Master",
+                    "type" : "link"
+                  },
+                  {
+                    "path" : "/user-master",
+                    "title" : "Users Master",
+                    "type" : "link"
+                  },
+                  {
+                    "path" : "/principal",
+                    "title" : "Principal",
+                    "type" : "link"
+                  },
+                  {
+                    "path" : "/kyc-type",
+                    "title" : "Kyc Master",
+                    "type" : "link"
+                  },
+                  {
+                    "active" : false,
+                    "children" : [
+                      {
+                        "path" : "/service",
+                        "title" : "Service",
+                        "type" : "link"
+                      },
+                      {
+                        "path" : "/service-type",
+                        "title" : "Service Type",
+                        "type" : "link"
+                      },
+                      {
+                        "path" : "/service-subtype",
+                        "title" : "Service Sub Type",
+                        "type" : "link"
+                      },
+                      {
+                        "path" : "/service-subtype-unit",
+                        "title" : "Service Sub Type Unit",
+                        "type" : "link"
+                      },
+                      {
+                        "path" : "/charge-type",
+                        "title" : "Charge Type",
+                        "type" : "link"
+                      },
+                      {
+                        "path" : "/unit",
+                        "title" : "Unit",
+                        "type" : "link"
+                      }
+                    ],
+                    "level" : 2,
+                    "title" : "Services",
+                    "type" : "sub"
+                  },
+                  {
+                    "active" : false,
+                    "children" : [
+                      {
+                        "path" : "/sac",
+                        "title" : "SAC",
+                        "type" : "link"
+                      },
+                      {
+                        "path" : "/sac-details",
+                        "title" : "SAC Details",
+                        "type" : "link"
+                      }
+                    ],
+                    "level" : 2,
+                    "title" : "Sac",
+                    "type" : "sub"
+                  },
+                  {
+                    "path" : "/status",
+                    "title" : "Status",
+                    "type" : "link"
+                  },
+            {
+                    "path" : "/currency",
+                    "title" : "Currency",
+                    "type" : "link"
+                  },
+                  {
+                    "active" : false,
+                    "children" : [
+                      {
+                        "path" : "/country",
+                        "title" : "Country",
+                        "type" : "link"
+                      },
+                      {
+                        "path" : "/state",
+                        "title" : "State",
+                        "type" : "link"
+                      },
+                      {
+                        "path" : "/city",
+                        "title" : "City",
+                        "type" : "link"
+                      }
+                    ],
+                    "level" : 2,
+                    "title" : "Country/State/City",
+                    "type" : "sub"
+                  }
+                ],
+                "icon" : "Document",
+                "id" : 2,
+                "level" : 1,
+                "title" : "Master",
+                "type" : "sub"
+              },
+              {
+                "active" : false,
+                "children" : [
+                  {
+                    "path" : "/port-call",
+                    "title" : "Port Call",
+                    "type" : "link"
+                  },
+                  {
+                    "path" : "/drs",
+                    "title" : "DRS (Daily Record Of Services)",
+                    "type" : "link"
+                  }
+                ],
+                "horizontalList" : true,
+                "icon" : "Swap",
+                "id" : 3,
+                "level" : 1,
+                "title" : "Operation",
+                "type" : "sub"
+              },
+              {
+                "active" : false,
+                "children" : [
+                  {
+                    "path" : "/contract",
+                    "title" : "Contract Management",
+                    "type" : "link"
+                  }
+                ],
+                "icon" : "Paper",
+                "id" : 6,
+                "level" : 1,
+                "title" : "Contract",
+                "type" : "sub"
+              },
+              {
+                "active" : false,
+                "children" : [
+                  {
+                    "path" : "/contract-report",
+                    "title" : "Contract Reports",
+                    "type" : "link"
+                  },
+                  {
+                    "path" : "/rate-report",
+                    "title" : "Rate Reports",
+                    "type" : "link"
+                  },
+                  {
+                    "path" : "/audit-trails",
+                    "title" : "Audit Trails",
+                    "type" : "link"
+                  }
+                ],
+                "icon" : "Activity",
+                "id" : 8,
+                "level" : 1,
+                "title" : "Report",
+                "type" : "sub"
+              }
+            ]
             new EncryptedStorage().setItem(new GlobalConfig().userDetails, JSON.stringify({
               ...value.data.userDetails,
-              menu: JSON.stringify(filteredMenu)  // Update with filtered menu
+              menu: JSON.stringify(filteredMenu) 
             }), false);
-            // console.log('filteredMenu = ',filteredMenu);
 
             this.navmenu.intializeMenu(filteredMenu);
             this.permissionsService.loadPermissions();

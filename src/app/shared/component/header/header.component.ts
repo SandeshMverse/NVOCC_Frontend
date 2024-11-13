@@ -13,7 +13,7 @@ import { LanguageComponent } from './language/language.component';
 import { BookmarkComponent } from './bookmark/bookmark.component';
 import { CartComponent } from './cart/cart.component';
 import { SvgIconComponent } from '../svg-icon/svg-icon.component';
-import { Menu } from '@shared/models/navmenu';
+import { Menu } from '@shared/models/navmenu-model';
 
 @Component({
   selector: 'app-header',
