@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
   constructor(private router: Router, private commondataservice: CommonDataService,private authGuard:AuthGuard,public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.commondataservice.intializeCommonData();
+    // this.commondataservice.intializeCommonData();
     this.profileDetails = currentUser();
     this.commondataservice.roleData.subscribe({
       next: (data) => {

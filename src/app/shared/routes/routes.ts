@@ -20,6 +20,6 @@ export const dashData: Routes = [
             pageId:31
         },
         loadChildren: () => import('@modules/masters/country/country.module').then(r => r.CountryModule),
-        canActivate: [PermissionGuard]
+        // canActivate: [PermissionGuard]
     },
 ]
