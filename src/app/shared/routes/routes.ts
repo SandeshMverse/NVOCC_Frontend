@@ -102,4 +102,14 @@ export const dashData: Routes = [
         loadChildren: () => import('@modules/masters/liner/liner.module').then(r => r.LinerModule),
         // canActivate: [PermissionGuard]
     },
+    {
+        path: 'status',
+        data: {
+            title: "Status",
+            breadcrumb: "status",
+            pageId: 30
+        },
+        loadChildren: () => import('@modules/masters/status/status.module').then(r => r.StatusModule),
+        // canActivate: [PermissionGuard]
+    },
 ]
