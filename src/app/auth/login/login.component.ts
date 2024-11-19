@@ -49,7 +49,6 @@ export class LoginComponent {
   login() {
     this.loginservice.login(this.loginForm.value).subscribe({
       next: (value) => {
-        console.log("value "+JSON.stringify(value))
         this.toastService.open("Login Successful", "success")
         new EncryptedStorage().clearAll();
         new EncryptedStorage().setItem(new GlobalConfig().authToken, value.data.token, false)

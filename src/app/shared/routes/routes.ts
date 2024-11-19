@@ -17,7 +17,7 @@ export const dashData: Routes = [
         data: {
             title: "Country",
             breadcrumb: "country",
-            pageId:31
+            pageId: 31
         },
         loadChildren: () => import('@modules/masters/country/country.module').then(r => r.CountryModule),
         // canActivate: [PermissionGuard]
@@ -27,7 +27,7 @@ export const dashData: Routes = [
         data: {
             title: "State",
             breadcrumb: "state",
-            pageId:32
+            pageId: 32
         },
         loadChildren: () => import('@modules/masters/state/state.module').then(r => r.StateModule),
         // canActivate: [PermissionGuard]
@@ -37,7 +37,7 @@ export const dashData: Routes = [
         data: {
             title: "City",
             breadcrumb: "city",
-            pageId:33
+            pageId: 33
         },
         loadChildren: () => import('@modules/masters/city/city.module').then(r => r.CityModule),
         // canActivate: [PermissionGuard]
@@ -90,6 +90,16 @@ export const dashData: Routes = [
             pageId: 8,
         },
         loadChildren: () => import('@modules/access-control/role-page-permission/role-page-permission.module').then(r => r.RolePagePermissionModule),
+        // canActivate: [PermissionGuard]
+    },
+    {
+        path: 'liner',
+        data: {
+            title: "Liner",
+            breadcrumb: "liner",
+            pageId: 31
+        },
+        loadChildren: () => import('@modules/masters/liner/liner.module').then(r => r.LinerModule),
         // canActivate: [PermissionGuard]
     },
 ]
