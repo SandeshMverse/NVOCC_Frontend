@@ -112,4 +112,14 @@ export const dashData: Routes = [
         loadChildren: () => import('@modules/masters/status/status.module').then(r => r.StatusModule),
         // canActivate: [PermissionGuard]
     },
+    {
+        path: 'hsn',
+        data: {
+            title: "HSN",
+            breadcrumb: "hsn",
+            pageId: 30
+        },
+        loadChildren: () => import('@modules/masters/hsn/hsn.module').then(r => r.HsnModule),
+        // canActivate: [PermissionGuard]
+    },
 ]
