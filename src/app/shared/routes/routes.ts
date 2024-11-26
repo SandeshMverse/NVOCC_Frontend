@@ -162,4 +162,14 @@ export const dashData: Routes = [
         loadChildren: () => import('@modules/masters/voyage/voyage.module').then(r => r.VoyageModule),
         // canActivate: [PermissionGuard]
     },
+    {
+        path: 'customer',
+        data: {
+            title: "Customer",
+            breadcrumb: "customer",
+            pageId: 30
+        },
+        loadChildren: () => import('@modules/masters/customer/customer.module').then(r => r.CustomerModule),
+        // canActivate: [PermissionGuard]
+    },
 ]
