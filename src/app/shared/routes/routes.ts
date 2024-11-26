@@ -132,4 +132,14 @@ export const dashData: Routes = [
         loadChildren: () => import('@modules/masters/location/location.module').then(r => r.LocationModule),
         // canActivate: [PermissionGuard]
     },
+    {
+        path: 'vessel',
+        data: {
+            title: "Vessel",
+            breadcrumb: "vessel",
+            pageId: 30
+        },
+        loadChildren: () => import('@modules/masters/vessel/vessel.module').then(r => r.VesselModule),
+        // canActivate: [PermissionGuard]
+    },
 ]

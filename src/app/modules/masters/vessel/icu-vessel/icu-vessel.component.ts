@@ -2,32 +2,32 @@ import { AfterViewInit, OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CountryService } from '@shared/_http/country.service';
-import { LocationService } from '@shared/_http/location.service';
-import { LocationDetailsData, LocationSearchGroup } from '@shared/configs/location-config';
+import { VesselService } from '@shared/_http/vessel.service';
+import { VesselDetailsData, VesselSearchGroup } from '@shared/configs/vessel-config';
 import { responseMessages } from '@shared/constants/response-msgs.constant';
 import { IFormStructure } from '@shared/models/form-model';
 import { RowData } from '@shared/models/table-model';
 import { ToastService } from '@shared/services/toast.service';
 import { Subscription } from 'rxjs';
 @Component({
-  selector: 'app-icu-location',
-  templateUrl: './icu-location.component.html',
-  styleUrl: './icu-location.component.scss'
+  selector: 'app-icu-vessel',
+  templateUrl: './icu-vessel.component.html',
+  styleUrl: './icu-vessel.component.scss'
 })
-export class IcuLocationComponent implements OnInit, AfterViewInit {
+export class IcuVesselComponent implements OnInit, AfterViewInit {
 
   subs: any;
   routeName: any;
   routeId: any;
-  LocationSearchGroupStructure!: IFormStructure[];
-  LocationDetailsData: RowData = LocationDetailsData;
+  VesselSearchGroupStructure!: IFormStructure[];
+  VesselDetailsData: RowData = VesselDetailsData;
 
-  constructor(private router: Router, private activatedroute: ActivatedRoute, private locationservice: LocationService, private toastService: ToastService, private countryservice: CountryService) { }
+  constructor(private router: Router, private activatedroute: ActivatedRoute, private vesselservice: VesselService, private toastService: ToastService, private countryservice: CountryService) { }
 
 
   ngOnInit(): void {
     this.subs = new Subscription()
-    this.LocationSearchGroupStructure = JSON.parse(JSON.stringify(LocationSearchGroup));
+    this.VesselSearchGroupStructure = JSON.parse(JSON.stringify(VesselSearchGroup));
     this.activatedroute.url.subscribe(urlSegments => {
       this.routeName = urlSegments[0]?.path;
     });
@@ -39,7 +39,7 @@ export class IcuLocationComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     if (this.routeId)
-      this.getLocation()
+      this.getVessel()
   }
 
   ngOnDestroy(): void {
@@ -47,7 +47,7 @@ export class IcuLocationComponent implements OnInit, AfterViewInit {
   }
 
   initialization(): void {
-    this.LocationSearchGroupStructure.forEach((ele, index) => {
+    this.VesselSearchGroupStructure.forEach((ele, index) => {
       if (this.routeName == 'view')
         ele.disable = true
       if (ele.type == 'select')
@@ -67,10 +67,10 @@ export class IcuLocationComponent implements OnInit, AfterViewInit {
     }
   }
 
-  getLocation() {
-    this.subs.add(this.locationservice.getLocation(this.routeId).subscribe({
+  getVessel() {
+    this.subs.add(this.vesselservice.getVessel(this.routeId).subscribe({
       next: (value) => {
-        this.LocationDetailsData.data = value.data
+        this.VesselDetailsData.data = value.data
       }
     }))
   }
@@ -79,11 +79,11 @@ export class IcuLocationComponent implements OnInit, AfterViewInit {
     let formData = JSON.parse(JSON.stringify(event["formValue"]))
     switch (this.routeName) {
       case 'create':
-        this.subs.add(this.locationservice.createLocation(formData).subscribe({
+        this.subs.add(this.vesselservice.createVessel(formData).subscribe({
           next: (value) => {
             const message = responseMessages.codes.find(item => item.code == value.error_message)?.message ?? '';
             this.toastService.open(message, 'success');
-            this.router.navigateByUrl("/location")
+            this.router.navigateByUrl("/vessel")
           },
           error: (err) => {
             const message = responseMessages.codes.find(item => item.code == err.error_message)?.message ?? 'Something went to wrong!';
@@ -92,11 +92,11 @@ export class IcuLocationComponent implements OnInit, AfterViewInit {
         }))
         break;
       case 'edit':
-        this.subs.add(this.locationservice.updateLocation(formData, this.routeId).subscribe({
+        this.subs.add(this.vesselservice.updateVessel(formData, this.routeId).subscribe({
           next: (value) => {
             const message = responseMessages.codes.find(item => item.code == value.error_message)?.message ?? '';
             this.toastService.open(message, 'success');
-            this.router.navigateByUrl("/location")
+            this.router.navigateByUrl("/vessel")
           },
           error: (err) => {
             const message = responseMessages.codes.find(item => item.code == err.error_message)?.message ?? 'Something went to wrong!';

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocationService } from '@shared/_http/location.service';
-import { LocationDetailsData } from '@shared/configs/location-control-config';
+import { LocationDetailsData } from '@shared/configs/location-config';
 import { RowData } from '@shared/models/table-model';
 import { Subscription } from 'rxjs';
 
