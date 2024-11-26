@@ -142,4 +142,24 @@ export const dashData: Routes = [
         loadChildren: () => import('@modules/masters/vessel/vessel.module').then(r => r.VesselModule),
         // canActivate: [PermissionGuard]
     },
+    {
+        path: 'port',
+        data: {
+            title: "Port",
+            breadcrumb: "port",
+            pageId: 30
+        },
+        loadChildren: () => import('@modules/masters/port/port.module').then(r => r.PortModule),
+        // canActivate: [PermissionGuard]
+    },
+    {
+        path: 'voyage',
+        data: {
+            title: "Voyage",
+            breadcrumb: "voyage",
+            pageId: 30
+        },
+        loadChildren: () => import('@modules/masters/voyage/voyage.module').then(r => r.VoyageModule),
+        // canActivate: [PermissionGuard]
+    },
 ]

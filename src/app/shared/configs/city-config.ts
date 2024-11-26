@@ -16,7 +16,7 @@ export const CityDetailsData: RowData = {
         { label: 'false', value: 'danger' },
         { label: 'true', value: 'success' },
     ],
-    "filterfields": ['city _name'],
+    "filterfields": ['city_name'],
     "isSearch": false
 }
 

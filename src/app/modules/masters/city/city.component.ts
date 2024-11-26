@@ -34,7 +34,6 @@ export class CityComponent {
     }))
   }
 
-
   handleCreateAction() {
     this.router.navigateByUrl("/city/create")
   }
